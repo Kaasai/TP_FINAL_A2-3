@@ -14,18 +14,20 @@ session_start();
 
     $sql = "SELECT * FROM connection WHERE email='$email'";
     $result = mysqli_query($conn, $sql);
+    $validation =null;
+
+    
     if (!$result->num_rows > 0) {
       $sql = "INSERT INTO connection (nom, prenom, email, mdp)
               VALUES('$name', '$nickname', '$email', '$password')";
       $result = mysqli_query($conn, $sql);
-      $message = null;
-    }
+      $validation = "<center style='color:blue;>Inscription réussie</center>";
+    } 
     else {
-      $message = "<center style='color:red'>utilisateur déjà existant</center>";
+      $message = "<center style='color:red';>Utilisateur déjà existant</center>";
     }
   }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +41,7 @@ session_start();
 <body background="">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">société general</a>
+    <a class="navbar-brand" href="#">SOCIETE GENERAL</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,12 +57,18 @@ session_start();
     </div>
   </div>
 </nav>
+<br>
+<?php
+      if ($validation != null) {
+        echo "$validation";
+      }
+?>
 	<form action="" method="post">
     <div class="container-fluid">
-      <div class="p-4  mx-auto shadow rounded" style="width:100%; max-width:340px; margin-top: 50px;">
+      <div class="p-4  mx-auto shadow rounded" style="width:100%; max-width:340px; margin-top: 25px;">
   
         <img src="assets/images/t.png" class=" =  rounded-circle mx-auto d-block" style="width: 140px;">
-        <h3><center>creation de compte</center></h3>
+        <h3><center>Création De Compte</center></h3>
           <input type="text" class="my-2 form-control" placeholder="Nom" name="nom">
           <input type="text" class="my-2 form-control" placeholder="Prénom" name="prenom">
       <input type="email" class="my-2 form-control" placeholder="Email" name="email">
