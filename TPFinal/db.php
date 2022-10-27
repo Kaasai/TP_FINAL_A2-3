@@ -12,4 +12,7 @@ if (!$conn) {
 
 
 //$pdo= new PDO('mysql:dbname=$database;charset=utf8;host=$server','$user','$pass')
+//if (!$pdo) {
+//    die('erreur de connexion');
+//}
 ?>
